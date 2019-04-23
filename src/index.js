@@ -61,7 +61,7 @@ const VLazyImageComponent = {
     if ("IntersectionObserver" in window) {
       this.observer = new IntersectionObserver(entries => {
         const image = entries[0];
-        if (image.isIntersecting) {
+        if (image.isIntersecting || image.intersectionRatio > 0) {
           this.intersected = true;
           this.observer.disconnect();
           this.$emit("intersect");
