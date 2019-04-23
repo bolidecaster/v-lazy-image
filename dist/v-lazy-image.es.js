@@ -1,5 +1,5 @@
 /**
- * v-lazy-image v1.3.1
+ * v-lazy-image v1.3.2
  * (c) 2019 Alex Jover Morales <alexjovermorales@gmail.com>
  * @license MIT
  */
@@ -69,7 +69,7 @@ var VLazyImageComponent = {
     if ("IntersectionObserver" in window) {
       this.observer = new IntersectionObserver(function (entries) {
         var image = entries[0];
-        if (image.isIntersecting) {
+        if (image.isIntersecting || image.intersectionRatio > 0) {
           this$1.intersected = true;
           this$1.observer.disconnect();
           this$1.$emit("intersect");
